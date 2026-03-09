@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UK BRAND | Fresh Finds Best Prices</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<style>
+
+/* ===========================
+GLOBAL
+=========================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#fff;
+color:#111;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+.container{
+width:90%;
+max-width:1300px;
+margin:auto;
+}
+
+/* ===========================
+NAVBAR
+=========================== */
+
+header{
+position:sticky;
+top:0;
+background:#000;
+z-index:1000;
+}
+
+.navbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 0;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+color:#fff;
+font-weight:700;
+font-size:20px;
+}
+
+.logo img{
+height:40px;
+border-radius:6px;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+}
+
+.nav-links a{
+color:#fff;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#ff0000;
+}
+
+.cart-icon{
+color:#fff;
+font-size:24px;
+cursor:pointer;
+position:relative;
+}
+
+.cart-count{
+position:absolute;
+top:-6px;
+right:-8px;
+background:red;
+color:white;
+font-size:11px;
+padding:3px 6px;
+border-radius:50%;
+}
+
+/* ===========================
+HERO
+=========================== */
+
+.hero{
+height:90vh;
+background:url("https://i.ibb.co/VyGCqd0/IMG-20260305-WA0027-1.jpg") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.hero-overlay{
+background:rgba(0,0,0,.6);
+padding:50px;
+border-radius:10px;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.hero p{
+margin-bottom:20px;
+font-size:18px;
+}
+
+.btn{
+background:red;
+color:white;
+padding:12px 25px;
+border-radius:30px;
+font-weight:600;
+transition:.3s;
+display:inline-block;
+}
+
+.btn:hover{
+background:black;
+}
+
+/* ===========================
+PRODUCTS
+=========================== */
+
+.section-title{
+text-align:center;
+font-size:32px;
+margin:60px 0 30px;
+}
+
+.product-carousel{
+display:flex;
+gap:20px;
+overflow-x:auto;
+padding-bottom:20px;
+scroll-snap-type:x mandatory;
+}
+
+.product-card{
+min-width:260px;
+background:white;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+padding:15px;
+transition:.3s;
+scroll-snap-align:start;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+}
+
+.product-image{
+position:relative;
+overflow:hidden;
+border-radius:10px;
+}
+
+.product-image img{
+width:100%;
+height:200px;
+object-fit:cover;
+transition:.4s;
+}
+
+.product-image img.second{
+position:absolute;
+top:0;
+left:0;
+opacity:0;
+}
+
+.product-card:hover img.second{
+opacity:1;
+}
+
+.product-title{
+font-weight:600;
+margin-top:10px;
+}
+
+.price{
+color:red;
+font-weight:700;
+margin:5px 0;
+}
+
+.stars{
+color:gold;
+}
+
+.add-cart{
+margin-top:10px;
+background:black;
+color:white;
+border:none;
+width:100%;
+padding:10px;
+border-radius:25px;
+cursor:pointer;
+}
+
+.add-cart:hover{
+background:red;
+}
+
+/* ===========================
+CART
+=========================== */
+
+.cart-drawer{
+position:fixed;
+top:0;
+right:-400px;
+width:350px;
+height:100%;
+background:white;
+box-shadow:-5px 0 25px rgba(0,0,0,.3);
+padding:20px;
+transition:.4s;
+overflow-y:auto;
+z-index:9999;
+}
+
+.cart-drawer.active{
+right:0;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+margin-bottom:8px;
+border-bottom:1px solid #eee;
+padding-bottom:6px;
+}
+
+.cart-total{
+font-weight:700;
+margin:10px 0;
+}
+
+/* ===========================
+FORM
+=========================== */
+
+form input,form textarea{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+/* ===========================
+WHATSAPP
+=========================== */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:14px;
+border-radius:50%;
+font-size:22px;
+}
+
+/* ===========================
+FOOTER
+=========================== */
+
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:40px;
+margin-top:60px;
+}
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+}
+
+.hero h1{
+font-size:32px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container navbar">
+
+<div class="logo">
+<img src="https://i.ibb.co/60Rzwpgr/IMG-20260305-WA0000.jpg">
+UK BRAND
+</div>
+
+<div class="nav-links">
+<a href="#">Home</a>
+<a href="#products">New Arrivals</a>
+<a href="#products">Best Sellers</a>
+<a href="#products">Featured</a>
+<a href="#products">Shop</a>
+<a href="#footer">Contact</a>
+</div>
+
+<div class="cart-icon" onclick="toggleCart()">
+🛒
+<span class="cart-count" id="cartCount">0</span>
+</div>
+
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-overlay">
+<h1>Wear Stylish and Comfortable Footwear</h1>
+<p>Fresh Finds Best Prices</p>
+<a href="#products" class="btn">Shop Now</a>
+</div>
+</section>
+
+<section id="products" class="container">
+
+<h2 class="section-title">Latest Sandals</h2>
+
+<div class="product-carousel" id="productsContainer"></div>
+
+</section>
+
+<div class="cart-drawer" id="cartDrawer">
+
+<h2>Your Cart</h2>
+
+<div id="cartItems"></div>
+
+<div class="cart-total">Total: Rs <span id="cartTotal">0</span></div>
+
+<h3>Customer Info</h3>
+
+<form id="orderForm">
+
+<input type="text" id="name" placeholder="Customer Name" required>
+<input type="text" id="phone" placeholder="Phone Number" required>
+<textarea id="address" placeholder="Address"></textarea>
+<input type="text" id="city" placeholder="City">
+
+<button class="btn" type="submit">Send Order</button>
+
+</form>
+
+</div>
+
+<a class="whatsapp" href="https://wa.me/03038457357">💬</a>
+
+<footer id="footer">
+
+<h3>UK BRAND</h3>
+
+<p>Street Address</p>
+<p>City</p>
+<p>Phone: 03038457357</p>
+<p>Email: bilalkhanakakhail777@gmail.com</p>
+<p>Order not send for email</p>
+
+</footer>
+
+<script>
+
+/* EMAILJS INIT */
+
+(function(){
+emailjs.init("YOUR_PUBLIC_KEY")
+})()
+
+/* PRODUCTS DATA */
+
+const products=[
+
+{name:"Product 1",price:6499,img1:"https://i.ibb.co/VyGCqd0/IMG-20260305-WA0027-1.jpg",img2:"https://i.ibb.co/0RkspPLd/IMG-20260305-WA0026.jpg"},
+
+{name:"Product 2",price:6499,img1:"https://i.ibb.co/RGGRbtLy/IMG-20260305-WA0025-1.jpg",img2:"https://i.ibb.co/RGGRbtLy/IMG-20260305-WA0025-1.jpg"},
+
+{name:"Product 3",price:6499,img1:"https://i.ibb.co/VpQzkbP6/IMG-20260305-WA0023.jpg",img2:"https://i.ibb.co/j0dyXTr/IMG-20260305-WA0022.jpg"},
+
+{name:"Product 4",price:5999,img1:"https://i.ibb.co/RTV7J32V/IMG-20260305-WA0019.jpg",img2:"https://i.ibb.co/G3Rqy276/IMG-20260305-WA0018.jpg"},
+
+{name:"Product 5",price:5999,img1:"https://i.ibb.co/dwGSYmK8/IMG-20260305-WA0020.jpg",img2:"https://i.ibb.co/LhdtGvxs/IMG-20260305-WA0021.jpg"},
+
+{name:"Product 6",price:6499,img1:"https://i.ibb.co/v4pdgyf3/IMG-20260305-WA0016.jpg",img2:"https://i.ibb.co/jkQ8ndp1/IMG-20260305-WA0015.jpg"},
+
+{name:"Product 7",price:5999,img1:"https://i.ibb.co/0yW79qLX/IMG-20260305-WA0024.jpg",img2:"https://i.ibb.co/351ZHwTd/IMG-20260305-WA0017.jpg"},
+
+{name:"Product 8",price:4499,img1:"https://i.ibb.co/0V6XcjP2/IMG-20260305-WA0014.jpg",img2:"https://i.ibb.co/RpBd09VL/IMG-20260305-WA0013.jpg"},
+
+{name:"Product 9",price:4499,img1:"https://i.ibb.co/SXc8fC47/IMG-20260305-WA0012.jpg",img2:"https://i.ibb.co/nVHNtLz/IMG-20260305-WA0011.jpg"},
+
+{name:"Product 10",price:3499,img1:"https://i.ibb.co/8n7WcqnM/IMG-20260305-WA0009.jpg",img2:"https://i.ibb.co/MxggRXYb/IMG-20260305-WA0010.jpg"},
+
+{name:"Product 11",price:6499,img1:"https://i.ibb.co/LD0sYDPL/IMG-20260305-WA0008.jpg",img2:"https://i.ibb.co/nsr8m8bN/IMG-20260305-WA0007.jpg"},
+
+{name:"Product 12",price:6499,img1:"https://i.ibb.co/V8LRncG/IMG-20260305-WA0006.jpg",img2:"https://i.ibb.co/xSBvtgML/IMG-20260305-WA0005.jpg"},
+
+{name:"Product 13",price:3499,img1:"https://i.ibb.co/GQ9F2JWD/IMG-20260305-WA0004.jpg",img2:"https://i.ibb.co/mC2XnVPc/IMG-20260305-WA0003.jpg"},
+
+{name:"Product 14",price:3499,img1:"https://i.ibb.co/Z18Ht5qX/IMG-20260305-WA0002.jpg",img2:"https://i.ibb.co/k6VHzT7x/IMG-20260305-WA0001.jpg"}
+
+]
+
+const container=document.getElementById("productsContainer")
+
+products.forEach((p,i)=>{
+
+let card=document.createElement("div")
+card.className="product-card"
+
+card.innerHTML=`
+
+<div class="product-image">
+<img src="${p.img1}">
+<img class="second" src="${p.img2}">
+</div>
+
+<div class="product-title">${p.name}</div>
+
+<div class="stars">★★★★★</div>
+
+<div class="price">Rs ${p.price}</div>
+
+<button class="add-cart" onclick="addToCart(${i})">Add to Cart</button>
+
+`
+
+container.appendChild(card)
+
+})
+
+/* CART */
+
+let cart=[]
+
+function addToCart(i){
+
+let item=products[i]
+
+let existing=cart.find(p=>p.name===item.name)
+
+if(existing){
+existing.qty++
+}else{
+cart.push({...item,qty:1})
+}
+
+updateCart()
+
+}
+
+function updateCart(){
+
+let cartItems=document.getElementById("cartItems")
+let cartTotal=document.getElementById("cartTotal")
+let cartCount=document.getElementById("cartCount")
+
+cartItems.innerHTML=""
+
+let total=0
+let count=0
+
+cart.forEach(item=>{
+
+total+=item.price*item.qty
+count+=item.qty
+
+let div=document.createElement("div")
+div.className="cart-item"
+
+div.innerHTML=`
+<span>${item.name} x${item.qty}</span>
+<span>Rs ${item.price*item.qty}</span>
+`
+
+cartItems.appendChild(div)
+
+})
+
+cartTotal.innerText=total
+cartCount.innerText=count
+
+}
+
+function toggleCart(){
+document.getElementById("cartDrawer").classList.toggle("active")
+}
+
+/* ORDER FORM */
+
+document.getElementById("orderForm").addEventListener("submit",function(e){
+
+e.preventDefault()
+
+let name=document.getElementById("name").value
+let phone=document.getElementById("phone").value
+let address=document.getElementById("address").value
+let city=document.getElementById("city").value
+
+let orderList=cart.map(p=>p.name+" x"+p.qty).join(", ")
+
+let total=document.getElementById("cartTotal").innerText
+
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+
+name:name,
+phone:phone,
+address:address,
+city:city,
+order:orderList,
+total:total
+
+}).then(()=>{
+
+alert("Order Sent Successfully!")
+
+cart=[]
+updateCart()
+
+})
+
+})
+
+</script>
+
+</body>
+</html>
